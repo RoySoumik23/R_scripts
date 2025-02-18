@@ -22,3 +22,4 @@ for (f in files) {
 }
 
 message("End of script: All Excel files from the specified directory have been loaded as data frames.")
+rm(df_name, f, files)
