@@ -43,6 +43,6 @@ library(condsurv)
 lapply(required_packages, library, character.only = TRUE)
 
 # Clean up workspace
-rm(required_packages)
+rm(required_packages, pkg)
 
 message("\n✅ All packages installed and loaded successfully!\n")
