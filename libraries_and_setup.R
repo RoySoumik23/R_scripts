@@ -27,7 +27,7 @@ required_packages <- c(
   "ggsurvfit", "tidycmprsk", "survival", "survminer",
   
   # Extras add here
-  "NMF", "patchwork". "ggrepel"
+  "NMF", "patchwork", "ggrepel"
 )
 
 # Install any missing packages
