@@ -39,6 +39,9 @@ for (pkg in required_packages) {
 devtools::install_github("zabore/condsurv")
 library(condsurv)
 
+BiocManager::install("ComplexHeatmap")
+library(ComplexHeatmap)
+
 # Load all packages
 lapply(required_packages, library, character.only = TRUE)
 
