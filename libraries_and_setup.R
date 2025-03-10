@@ -28,7 +28,7 @@ required_packages <- c(
   
   # Extras
   "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool",
-  "reshape2", "circlize", "Palimpsest", "qgraph", "GGally",
+  "reshape2", "circlize", "Palimpsest", "qgraph", "GGally", "lsa",
   "corrgram"
 )
 
