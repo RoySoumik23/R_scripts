@@ -27,7 +27,7 @@ required_packages <- c(
   "ggsurvfit", "tidycmprsk", "survival", "survminer",
   
   # Extras
-  "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize"
+  "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize", "Palimpsest"
 )
 
 # Get installed packages
@@ -58,8 +58,6 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 if (!requireNamespace("Palimpsest", quietly = TRUE)) {
     devtools::install_github("FunGeST/Palimpsest", dependencies = TRUE)
 }
-# Load Palimpsest
-library(Palimpsest)
 
 # Load all packages
 invisible(lapply(required_packages, library, character.only = TRUE))
