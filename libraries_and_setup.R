@@ -23,29 +23,42 @@ required_packages <- c(
   "GenomicRanges", "IRanges", "SummarizedExperiment", "Biostrings", 
   "BSgenome", "AnnotationHub", "rtracklayer",
   
-  # Survival Analysis (New Additions)
+  # Survival Analysis
   "ggsurvfit", "tidycmprsk", "survival", "survminer",
   
-  # Extras add here
+  # Extras
   "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize"
 )
 
-# Install any missing packages
-for (pkg in required_packages) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    install.packages(pkg, dependencies = TRUE)
-  }
-}
-devtools::install_github("zabore/condsurv")
-library(condsurv)
+# Get installed packages
+installed_packages <- rownames(installed.packages())
 
-BiocManager::install("ComplexHeatmap")
-library(ComplexHeatmap)
+# Install missing packages
+missing_packages <- setdiff(required_packages, installed_packages)
+if (length(missing_packages) > 0) {
+  install.packages(missing_packages, dependencies = TRUE)
+}
+
+# Install GitHub package if missing
+if (!"condsurv" %in% installed_packages) {
+  devtools::install_github("zabore/condsurv")
+}
+
+# Install Bioconductor package if missing
+if (!"ComplexHeatmap" %in% installed_packages) {
+  BiocManager::install("ComplexHeatmap")
+}
+
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+BiocManager::install("Palimpsest")
 
 # Load all packages
-lapply(required_packages, library, character.only = TRUE)
+invisible(lapply(required_packages, library, character.only = TRUE))
 
 # Clean up workspace
-rm(required_packages, pkg)
+rm(required_packages, installed_packages, missing_packages)
 
 message("\n✅ All packages installed and loaded successfully!\n")
