@@ -27,7 +27,7 @@ required_packages <- c(
   "ggsurvfit", "tidycmprsk", "survival", "survminer",
   
   # Extras
-  "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize"
+  "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize", "Palimpsest"
 )
 
 # Get installed packages
@@ -49,11 +49,15 @@ if (!"ComplexHeatmap" %in% installed_packages) {
   BiocManager::install("ComplexHeatmap")
 }
 
-if (!requireNamespace("BiocManager", quietly = TRUE)) {
-    install.packages("BiocManager")
+# Ensure devtools is installed
+if (!requireNamespace("devtools", quietly = TRUE)) {
+    install.packages("devtools")
 }
 
-BiocManager::install("Palimpsest")
+# Check if Palimpsest is installed; if not, install it from GitHub
+if (!requireNamespace("Palimpsest", quietly = TRUE)) {
+    devtools::install_github("FunGeST/Palimpsest", dependencies = TRUE)
+}
 
 # Load all packages
 invisible(lapply(required_packages, library, character.only = TRUE))
