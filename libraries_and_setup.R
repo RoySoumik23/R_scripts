@@ -49,12 +49,22 @@ if (!"ComplexHeatmap" %in% installed_packages) {
   BiocManager::install("ComplexHeatmap")
 }
 
+# Ensure BiocManager is installed
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+# Install VariantAnnotation only if it's not already installed
+if (!requireNamespace("VariantAnnotation", quietly = TRUE)) {
+    BiocManager::install("VariantAnnotation")
+}
+
 # Ensure devtools is installed
 if (!requireNamespace("devtools", quietly = TRUE)) {
     install.packages("devtools")
 }
 
-# Check if Palimpsest is installed; if not, install it from GitHub
+# Install Palimpsest from GitHub only if it's not already installed
 if (!requireNamespace("Palimpsest", quietly = TRUE)) {
     devtools::install_github("FunGeST/Palimpsest", dependencies = TRUE)
 }
