@@ -27,7 +27,7 @@ required_packages <- c(
   "ggsurvfit", "tidycmprsk", "survival", "survminer",
   
   # Extras
-  "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize", "Palimpsest"
+  "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool", "reshape2", "circlize", "Palimpsest", "qgraph", "GGally"
 )
 
 # Get installed packages
