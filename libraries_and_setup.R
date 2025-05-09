@@ -29,7 +29,7 @@ required_packages <- c(
   # Extras
   "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool",
   "reshape2", "circlize", "Palimpsest", "qgraph", "GGally", "lsa",
-  "corrgram", "ggtext", "ggcorrplot"
+  "corrgram", "ggtext", "ggcorrplot" ,"cluster", "mclust", "pheatmap", "circlize"
 )
 
 # Get installed packages
@@ -70,6 +70,11 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 if (!requireNamespace("Palimpsest", quietly = TRUE)) {
     devtools::install_github("FunGeST/Palimpsest", dependencies = TRUE)
 }
+
+if (!requireNamespace("ConsensusClusterPlus", quietly = TRUE)) {
+    BiocManager::install("ConsensusClusterPlus")
+}
+
 
 # Load all packages
 invisible(lapply(required_packages, library, character.only = TRUE))
