@@ -1,4 +1,6 @@
+#===============================================================
 # List of required packages
+#===============================================================
 required_packages <- c(
   # Basic Data Handling
   "readxl", "readr", "data.table", "dplyr", "tidyr", "purrr", 
@@ -14,7 +16,7 @@ required_packages <- c(
   "Rtsne", "umap", "FactoMineR", "factoextra", "NbClust", "cluster", "fpc",
   
   # RNA-Seq & Differential Expression
-  
+  # add...
   
   # Single-Cell RNA-Seq
   "Seurat",
@@ -29,16 +31,28 @@ required_packages <- c(
   # Extras
   "NMF", "patchwork", "ggrepel", "tidyverse", "igraph", "SNFtool",
   "reshape2", "circlize", "Palimpsest", "qgraph", "GGally", "lsa",
-  "corrgram", "ggtext", "ggcorrplot" ,"cluster", "mclust", "pheatmap", "circlize"
+  "corrgram", "ggtext", "ggcorrplot" ,"cluster", "mclust", "pheatmap",
+  "circlize"
 )
 
+#===============================================================
 # Get installed packages
+#===============================================================
 installed_packages <- rownames(installed.packages())
 
 # Install missing packages
 missing_packages <- setdiff(required_packages, installed_packages)
 if (length(missing_packages) > 0) {
   install.packages(missing_packages, dependencies = TRUE)
+}
+
+#=EXTRAS========================================================
+# BiocManager
+#===============================================================
+
+# Ensure BiocManager is installed
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
 }
 
 # Install GitHub package if missing
@@ -51,16 +65,18 @@ if (!"ComplexHeatmap" %in% installed_packages) {
   BiocManager::install("ComplexHeatmap")
 }
 
-# Ensure BiocManager is installed
-if (!requireNamespace("BiocManager", quietly = TRUE)) {
-    install.packages("BiocManager")
-}
-
 # Install VariantAnnotation only if it's not already installed
 if (!requireNamespace("VariantAnnotation", quietly = TRUE)) {
     BiocManager::install("VariantAnnotation")
 }
 
+if (!requireNamespace("ConsensusClusterPlus", quietly = TRUE)) {
+    BiocManager::install("ConsensusClusterPlus")
+}
+
+#=EXTRAS========================================================
+# Devtools
+#===============================================================
 # Ensure devtools is installed
 if (!requireNamespace("devtools", quietly = TRUE)) {
     install.packages("devtools")
@@ -71,15 +87,15 @@ if (!requireNamespace("Palimpsest", quietly = TRUE)) {
     devtools::install_github("FunGeST/Palimpsest", dependencies = TRUE)
 }
 
-if (!requireNamespace("ConsensusClusterPlus", quietly = TRUE)) {
-    BiocManager::install("ConsensusClusterPlus")
-}
+#=DONE==========================================================
 
 
-# Load all packages
+#=Load all packages=============================================
 invisible(lapply(required_packages, library, character.only = TRUE))
 
-# Clean up workspace
+#=Clean up workspace============================================
 rm(required_packages, installed_packages, missing_packages)
 
+#===============================================================
 message("\n✅ All packages installed and loaded successfully!\n")
+#===============================================================
