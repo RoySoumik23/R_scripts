@@ -14,14 +14,14 @@ required_packages <- c(
   "Rtsne", "umap", "FactoMineR", "factoextra", "NbClust", "cluster", "fpc",
   
   # RNA-Seq & Differential Expression
-  "DESeq2", "edgeR", "limma", "tximport", "biomaRt",
+  
   
   # Single-Cell RNA-Seq
-  "Seurat", "SingleCellExperiment", "scran",
+  "Seurat",
   
   # Genomic Data Handling
   "GenomicRanges", "IRanges", "SummarizedExperiment", "Biostrings", 
-  "BSgenome", "AnnotationHub", "rtracklayer",
+  "BSgenome", "rtracklayer",
   
   # Survival Analysis
   "ggsurvfit", "tidycmprsk", "survival", "survminer",
