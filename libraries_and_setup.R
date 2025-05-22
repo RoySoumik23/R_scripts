@@ -92,7 +92,7 @@ invisible(lapply(all_packages, function(pkg) {
 # Clean up workspace
 #===============================================================
 rm(cran_packages, bioc_packages, installed_packages, 
-   missing_cran, all_packages)
+   missing_cran, all_packages, pkg)
 
 #===============================================================
 message("\n✅ All packages installed and loaded successfully!\n")
