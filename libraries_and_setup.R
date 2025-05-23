@@ -30,7 +30,7 @@ cran_packages <- c(
   # Extras
   "NMF", "tidyverse", "igraph", "SNFtool", "reshape2", "qgraph", 
   "GGally", "lsa", "corrgram", "ggtext", "ggcorrplot", "mclust",
-  "dbscan", "kernlab", "kernlab"
+  "dbscan", "kernlab", "kernlab", "ggridges"
 )
 
 # Bioconductor packages
